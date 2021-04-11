@@ -43,7 +43,7 @@ namespace Entidades
         {
             foreach(char c in binario)
             {
-                if (!c.Equals('0') || !c.Equals('1'))
+                if (!(c.Equals('0') || c.Equals('1') || c.Equals('\n')))
                 {
                     return false;
                 }
@@ -56,18 +56,20 @@ namespace Entidades
         {
             int devolucion = 0;
 
-            int contador = (binario.Length - 1);
+            int contador = (binario.Length - 2);
             int digito;
 
             if(EsBinario(binario))
             {
                 foreach (char c in binario)
                 {
+
                     int.TryParse(c.ToString(), out digito);
 
                     if (contador == 0)
                     {
                         devolucion += digito;
+                        break;
                     }
                     else
                     {

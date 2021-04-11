@@ -8,7 +8,7 @@ namespace Entidades
 {
     public static class Calculadora
     {
-        static double Operar(Numero num1, Numero num2, string operador)
+        public static double Operar(Numero num1, Numero num2, string operador)
         {
             operador = ValidarOperador(operador.ElementAt(0));
 
