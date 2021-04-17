@@ -73,6 +73,7 @@ namespace MiCalculadora
             // 
             // btnBinarioADecimal
             // 
+            this.btnBinarioADecimal.Enabled = false;
             this.btnBinarioADecimal.Location = new System.Drawing.Point(366, 221);
             this.btnBinarioADecimal.Name = "btnBinarioADecimal";
             this.btnBinarioADecimal.Size = new System.Drawing.Size(300, 40);
@@ -83,6 +84,7 @@ namespace MiCalculadora
             // 
             // btnDecimalABinario
             // 
+            this.btnDecimalABinario.Enabled = false;
             this.btnDecimalABinario.Location = new System.Drawing.Point(39, 221);
             this.btnDecimalABinario.Name = "btnDecimalABinario";
             this.btnDecimalABinario.Size = new System.Drawing.Size(300, 40);
