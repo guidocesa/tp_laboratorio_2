@@ -18,7 +18,7 @@ namespace Entidades
         /// <returns></returns>
         public static double Operar(Numero num1, Numero num2, string operador)
         {
-            operador = ValidarOperador(operador.ElementAt(0));
+            operador = ValidarOperador(operador.ElementAtOrDefault(0));
 
             switch(operador)
             {

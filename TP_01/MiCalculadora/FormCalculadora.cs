@@ -75,10 +75,13 @@ namespace MiCalculadora
         /// <param name="e"></param>
         private void btnOperar_Click(object sender, EventArgs e)
         {
-            this.lblResultado.Text = FormCalculadora.Operar(this.boxOperando1.Text, this.boxOperando2.Text, this.comboOperador.Text).ToString();
+            if (this.boxOperando1.Text != "" && this.boxOperando2.Text != "" && this.comboOperador.Text != "")
+            {
+                this.lblResultado.Text = FormCalculadora.Operar(this.boxOperando1.Text, this.boxOperando2.Text, this.comboOperador.Text).ToString();
 
-            this.btnDecimalABinario.Enabled = true;
-            this.btnBinarioADecimal.Enabled = false;
+                this.btnDecimalABinario.Enabled = true;
+                this.btnBinarioADecimal.Enabled = false;
+            }
         }
 
         /// <summary>
