@@ -35,11 +35,36 @@ namespace Ventana_Produccion
             try
             {
                 this.warehouse.ReceiveRequest(newRequest);
+                this.UpdateTable();
+                MessageBox.Show("Request saved succesfully!");
+                this.ClearBoxes();
             }
             catch(Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
+
+            
+        }
+
+        private void ClearBoxes()
+        {
+            this.num_Qua_Axle.Value = 0;
+            this.num_Qua_BB.Value = 0;
+            this.num_Qua_Bolt.Value = 0;
+            this.num_Qua_Nut.Value = 0;
+            this.num_Qua_Cogs.Value = 0;
+
+            this.num_Teeth_Cogs.Value = 0;
+
+            this.txt_Diameter_Axle.Text = "";
+            this.txt_Diameter_Nut.Text = "";
+            this.txt_Diameter_BB.Text = "";
+            this.txt_Diameter_Bolt.Text = "";
+
+            this.txt_Length_Axle.Text = "";
+            this.txt_Length_Bolt.Text = "";
+
         }
 
         private void CheckBBs(List<CarPart> l)
@@ -97,7 +122,7 @@ namespace Ventana_Produccion
 
                 if (length != 0 && diameter != 0)
                 {
-                    l.Add(new Bolt(diameter, length, (Bolt.HeadType) this.cmb_Type_Bolt.SelectedItem , (int)this.num_Qua_Axle.Value));
+                    l.Add(new Bolt(diameter, length, (Bolt.HeadType) this.cmb_Type_Bolt.SelectedItem , (int)this.num_Qua_Bolt.Value));
                 }
             }
         }
@@ -115,15 +140,43 @@ namespace Ventana_Produccion
             this.warehouse.AddParts(newParts);
 
             this.UpdateTable();
+            this.ClearBoxes();
         }
 
         private void UpdateTable()
         {
             this.dataGrid_PartsTable.Rows.Clear();
 
-            foreach(KeyValuePair<string,CarPart> item in this.warehouse.GetParts())
+            foreach(CarPart item in this.warehouse.GetParts())
             {
-                this.dataGrid_PartsTable.Rows.Add(item.Key, item.Value.CheckStock());
+                this.dataGrid_PartsTable.Rows.Add(item.Id, item.CheckStock());
+            }
+        }
+
+        private void btn_LoadWare_Click(object sender, EventArgs e)
+        {
+            string path = Environment.CurrentDirectory + "\\Warehouse.xml";
+            try
+            {
+                this.warehouse.Load(path);
+                this.UpdateTable();
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void btn_SaveWarehouse_Click(object sender, EventArgs e)
+        {
+            string path = Environment.CurrentDirectory + "\\Warehouse.xml";
+            try
+            {
+                this.warehouse.Save(path);
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
         }
     }

@@ -68,6 +68,8 @@ namespace Ventana_Produccion
             this.column_ItemID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.column_Stock = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.warehouseBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.btn_LoadWare = new System.Windows.Forms.Button();
+            this.btn_SaveWarehouse = new System.Windows.Forms.Button();
             this.gBox_Nuts.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.num_Qua_Nut)).BeginInit();
             this.gBox_BBearings.SuspendLayout();
@@ -420,11 +422,33 @@ namespace Ventana_Produccion
             // 
             this.warehouseBindingSource1.DataSource = typeof(Clases.Warehouse);
             // 
+            // btn_LoadWare
+            // 
+            this.btn_LoadWare.Location = new System.Drawing.Point(778, 28);
+            this.btn_LoadWare.Name = "btn_LoadWare";
+            this.btn_LoadWare.Size = new System.Drawing.Size(193, 38);
+            this.btn_LoadWare.TabIndex = 16;
+            this.btn_LoadWare.Text = "Load Warehouse";
+            this.btn_LoadWare.UseVisualStyleBackColor = true;
+            this.btn_LoadWare.Click += new System.EventHandler(this.btn_LoadWare_Click);
+            // 
+            // btn_SaveWarehouse
+            // 
+            this.btn_SaveWarehouse.Location = new System.Drawing.Point(778, 72);
+            this.btn_SaveWarehouse.Name = "btn_SaveWarehouse";
+            this.btn_SaveWarehouse.Size = new System.Drawing.Size(193, 36);
+            this.btn_SaveWarehouse.TabIndex = 17;
+            this.btn_SaveWarehouse.Text = "Save Warehouse";
+            this.btn_SaveWarehouse.UseVisualStyleBackColor = true;
+            this.btn_SaveWarehouse.Click += new System.EventHandler(this.btn_SaveWarehouse_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(767, 440);
+            this.ClientSize = new System.Drawing.Size(983, 440);
+            this.Controls.Add(this.btn_SaveWarehouse);
+            this.Controls.Add(this.btn_LoadWare);
             this.Controls.Add(this.dataGrid_PartsTable);
             this.Controls.Add(this.btn_Add);
             this.Controls.Add(this.gBox_Axles);
@@ -499,6 +523,8 @@ namespace Ventana_Produccion
         private System.Windows.Forms.DataGridView dataGrid_PartsTable;
         private System.Windows.Forms.DataGridViewTextBoxColumn column_ItemID;
         private System.Windows.Forms.DataGridViewTextBoxColumn column_Stock;
+        private System.Windows.Forms.Button btn_LoadWare;
+        private System.Windows.Forms.Button btn_SaveWarehouse;
     }
 }
 

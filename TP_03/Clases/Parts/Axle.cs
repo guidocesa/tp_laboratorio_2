@@ -6,50 +6,29 @@ using System.Threading.Tasks;
 
 namespace Clases
 {
-    public class Axle : CarPart, IStockable<Axle>
+    [Serializable]
+    public class Axle : CarPart
     {
-        private float length;
-        private float diameter;
 
-        public float Length
-        {
-            get
-            {
-                return this.length;
-            }
-            set
-            {
-                this.length = value;
-            }
-        }
+        public float Length { get; set; }
 
-        public float Diameter
-        {
-            get
-            {
-                return this.diameter;
-            }
-            set
-            {
-                this.diameter = value;
-            }
-        }
+        public float Diameter {get; set;}
 
         public Axle(float length, float diameter, int stock) 
             : base( stock , "A-L" + length.ToString() + "-D" + diameter.ToString())
         {
-            this.diameter = diameter;
-            this.length = length;
+            this.Diameter = diameter;
+            this.Length = length;
         }
 
         
 
         public Axle RequestStock(int stock)
         {
-            if(this.stock >= stock)
+            if(this.Stock >= stock)
             {
-                this.stock = -stock;
-                return new Axle(this.length, this.diameter, this.stock);
+                this.Stock = -stock;
+                return new Axle(this.Length, this.Diameter, this.Stock);
             }
 
             throw new Exception("Out of Stock");

@@ -10,18 +10,32 @@ namespace Serializer
 {
     public class XML<T>
     {
+
+        /// <summary>
+        /// Saves the recieved serializable object as an XML to the recieved path.
+        /// </summary>
+        /// <param name="_object"></param>
+        /// <param name="path"></param>
+        /// <returns></returns>
         public bool Save(T _object, string path)
         {
             if (_object != null && path != null)
             {
-                using (XmlTextWriter xmlTextWriter = new XmlTextWriter(path, Encoding.UTF8))
+                try
                 {
-                    XmlSerializer serializer = new XmlSerializer(typeof(T));
+                    using (XmlTextWriter xmlTextWriter = new XmlTextWriter(path, Encoding.UTF8))
+                    {
+                        XmlSerializer serializer = new XmlSerializer(typeof(T));
 
-                    serializer.Serialize(xmlTextWriter, _object);
+                        serializer.Serialize(xmlTextWriter, _object);
+                    }
+
+                    return true;
                 }
-
-                return true;
+                catch(Exception e)
+                {
+                    throw e;
+                }
             }
             else
             {
@@ -29,6 +43,12 @@ namespace Serializer
             }
         }
 
+        /// <summary>
+        /// Reads the serialized object to the generic recieved from the recieved path.
+        /// </summary>
+        /// <param name="path"></param>
+        /// <param name="_object"></param>
+        /// <returns></returns>
         public bool Read(string path, out T _object)
         {
             _object = default;
