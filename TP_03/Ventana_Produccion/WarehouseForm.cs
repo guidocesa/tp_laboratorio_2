@@ -11,11 +11,11 @@ using System.Windows.Forms;
 
 namespace Ventana_Produccion
 {
-    public partial class Form1 : Form
+    public partial class WarehouseForm : Form
     {
         private Warehouse warehouse;
 
-        public Form1()
+        public WarehouseForm()
         {
             this.warehouse = Warehouse.Get_Warehouse();
             InitializeComponent();
@@ -173,6 +173,7 @@ namespace Ventana_Produccion
             try
             {
                 this.warehouse.Save(path);
+                MessageBox.Show("Warehouse saved succesfully!");
             }
             catch(Exception ex)
             {

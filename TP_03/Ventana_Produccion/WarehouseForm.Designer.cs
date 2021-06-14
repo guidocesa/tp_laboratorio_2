@@ -1,7 +1,7 @@
 ﻿
 namespace Ventana_Produccion
 {
-    partial class Form1
+    partial class WarehouseForm
     {
         /// <summary>
         /// Required designer variable.
@@ -459,7 +459,7 @@ namespace Ventana_Produccion
             this.Controls.Add(this.lbl_Bolts);
             this.Controls.Add(this.btn_MakeRequest);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "Warehouse Manager";
             this.gBox_Nuts.ResumeLayout(false);
             this.gBox_Nuts.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.num_Qua_Nut)).EndInit();

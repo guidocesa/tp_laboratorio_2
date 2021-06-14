@@ -3,13 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31313.79
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Production_Window", "Ventana_Produccion\Production_Window.csproj", "{B390FEDB-228E-4C37-8CF1-0F5CCA455112}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WarehouseForm", "Ventana_Produccion\WarehouseForm.csproj", "{B390FEDB-228E-4C37-8CF1-0F5CCA455112}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Clases", "Clases\Clases.csproj", "{341775C9-FA01-47F4-A08F-74DFC2455FE3}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Serializer", "Serializer\Serializer.csproj", "{1AD94880-AC2E-400A-8283-1A4C399B78AA}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTests", "UnitTests\UnitTests.csproj", "{E2C27438-915F-418F-8D6A-14D5DC42BA61}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test", "Test\Test.csproj", "{ACED7F48-C619-4E1E-A2CF-BB9605EF562F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{E2C27438-915F-418F-8D6A-14D5DC42BA61}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E2C27438-915F-418F-8D6A-14D5DC42BA61}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E2C27438-915F-418F-8D6A-14D5DC42BA61}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ACED7F48-C619-4E1E-A2CF-BB9605EF562F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ACED7F48-C619-4E1E-A2CF-BB9605EF562F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ACED7F48-C619-4E1E-A2CF-BB9605EF562F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ACED7F48-C619-4E1E-A2CF-BB9605EF562F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
