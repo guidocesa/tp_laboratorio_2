@@ -46,6 +46,24 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AddInventoryForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddInventoryForm.Designer.cs">
+      <DependentUpon>AddInventoryForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RequestForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RequestForm.Designer.cs">
+      <DependentUpon>RequestForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TruckWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TruckWindow.Designer.cs">
+      <DependentUpon>TruckWindow.cs</DependentUpon>
+    </Compile>
     <Compile Include="WarehouseForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -54,6 +72,15 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="AddInventoryForm.resx">
+      <DependentUpon>AddInventoryForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RequestForm.resx">
+      <DependentUpon>RequestForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TruckWindow.resx">
+      <DependentUpon>TruckWindow.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="WarehouseForm.resx">
       <DependentUpon>WarehouseForm.cs</DependentUpon>
     </EmbeddedResource>

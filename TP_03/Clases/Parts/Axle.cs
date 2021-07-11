@@ -33,5 +33,10 @@ namespace Clases
 
             throw new Exception("Out of Stock");
         }
+
+        public override CarPart GetCopy()
+        {
+            return new Axle(this.Length, this.Diameter, 0);
+        }
     }
 }

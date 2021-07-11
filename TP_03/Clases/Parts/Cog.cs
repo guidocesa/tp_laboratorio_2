@@ -17,5 +17,9 @@ namespace Clases
             this.TeethNumber = teethNumber;
         }
 
+        public override CarPart GetCopy()
+        {
+            return new Cog(this.TeethNumber, 0);
+        }
     }
 }

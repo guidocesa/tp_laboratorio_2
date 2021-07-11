@@ -16,5 +16,10 @@ namespace Clases
         {
             this.Diameter = diameter;
         }
+
+        public override CarPart GetCopy()
+        {
+            return new BallBearing(this.Diameter, 0);
+        }
     }
 }

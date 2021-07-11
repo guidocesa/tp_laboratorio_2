@@ -91,6 +91,18 @@ namespace Clases
             }
         }
 
+        public bool Equals(String other)
+        {
+            if (this.Id == other)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
         /// <summary>
         /// Compares two CarParts to see if they are the same.
         /// </summary>
@@ -119,5 +131,11 @@ namespace Clases
         {
             return !(a == b);
         }
+
+        /// <summary>
+        /// Returns a Copy of the CarPart with Stock = 0;
+        /// </summary>
+        /// <returns></returns>
+        public abstract CarPart GetCopy();
     }
 }

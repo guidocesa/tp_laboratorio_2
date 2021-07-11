@@ -41,9 +41,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Extender.cs" />
     <Compile Include="IStockable.cs" />
     <Compile Include="Parts\BallBearing.cs" />
     <Compile Include="CarPart.cs" />
+    <Compile Include="SQLConnection.cs" />
     <Compile Include="Warehouse.cs" />
     <Compile Include="Parts\Axle.cs" />
     <Compile Include="Parts\Cog.cs" />

@@ -1,4 +1,5 @@
 ﻿using Clases;
+using Serializer;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -6,6 +7,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -14,133 +16,62 @@ namespace Ventana_Produccion
     public partial class WarehouseForm : Form
     {
         private Warehouse warehouse;
+        public delegate void Callback();
+        public event Callback truckFinished;
 
         public WarehouseForm()
         {
             this.warehouse = Warehouse.Get_Warehouse();
             InitializeComponent();
-            cmb_Type_Bolt.DropDownStyle = ComboBoxStyle.DropDownList;
-            cmb_Type_Bolt.DataSource = new List<Bolt.HeadType>() { Bolt.HeadType.HEX, Bolt.HeadType.ALEM };
+            this.truckFinished += ChangeButtons;
         }
+
+
 
         private void btn_MakeRequest_Click(object sender, EventArgs e)
         {
-            List<CarPart> newRequest = new List<CarPart>();
-            this.CheckBolts(newRequest);
-            this.CheckNuts(newRequest);
-            this.CheckAxles(newRequest);
-            this.CheckCogs(newRequest);
-            this.CheckBBs(newRequest);
+            RequestForm reqForm = new RequestForm(this.warehouse.GetParts());
 
-            try
+            if(reqForm.ShowDialog() == DialogResult.Yes)
             {
-                this.warehouse.ReceiveRequest(newRequest);
+                Thread truckThread = new Thread(this.ShowTruck);
+                truckThread.Start();
+                this.btn_MakeRequest.Enabled = false;
+                this.btn_MakeRequest.Text = "Request in progress!";
+            }
+        }
+
+        private void ChangeButtons()
+        {
+            if(this.InvokeRequired)
+            {
+                Callback callback = new Callback(ChangeButtons);
+                this.Invoke(callback);
+            }
+            else
+            {
+                this.btn_MakeRequest.Enabled = true;
+                this.btn_MakeRequest.Text = "Make Request";
+                MessageBox.Show("Request Finished!");
                 this.UpdateTable();
-                MessageBox.Show("Request saved succesfully!");
-                this.ClearBoxes();
-            }
-            catch(Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-
-            
-        }
-
-        private void ClearBoxes()
-        {
-            this.num_Qua_Axle.Value = 0;
-            this.num_Qua_BB.Value = 0;
-            this.num_Qua_Bolt.Value = 0;
-            this.num_Qua_Nut.Value = 0;
-            this.num_Qua_Cogs.Value = 0;
-
-            this.num_Teeth_Cogs.Value = 0;
-
-            this.txt_Diameter_Axle.Text = "";
-            this.txt_Diameter_Nut.Text = "";
-            this.txt_Diameter_BB.Text = "";
-            this.txt_Diameter_Bolt.Text = "";
-
-            this.txt_Length_Axle.Text = "";
-            this.txt_Length_Bolt.Text = "";
-
-        }
-
-        private void CheckBBs(List<CarPart> l)
-        {
-            if(this.num_Qua_BB.Value > 0)
-            {
-                float.TryParse(this.txt_Diameter_BB.Text, out float diameter);
-
-                if(diameter > 0)
-                {
-                    l.Add(new BallBearing(diameter, (int) this.num_Qua_BB.Value));
-                }
             }
         }
 
-        private void CheckAxles(List<CarPart> l)
+        private void ShowTruck()
         {
-            if(this.num_Qua_Axle.Value > 0)
-            {
-                float.TryParse(this.txt_Diameter_Axle.Text, out float diameter);
-                float.TryParse(this.txt_Length_Axle.Text, out float length);
-
-                if(length != 0 && diameter != 0)
-                {
-                    l.Add(new Axle(length, diameter, (int) this.num_Qua_Axle.Value));
-                }
-            }
-        }
-
-        private void CheckCogs(List<CarPart> l)
-        {
-            if (this.num_Qua_Cogs.Value > 0 && this.num_Teeth_Cogs.Value > 5)
-            {
-                l.Add(new Cog((int) this.num_Teeth_Cogs.Value, (int) this.num_Qua_Cogs.Value));
-            }
-        }
-
-        private void CheckNuts(List<CarPart> l)
-        {
-            if (this.num_Qua_Nut.Value > 0)
-            {
-                if (float.TryParse(this.txt_Diameter_Nut.Text, out float diameter))
-                {
-                    l.Add(new Nut(diameter, (int)this.num_Qua_Nut.Value));
-                }
-            }
-        }
-
-        private void CheckBolts(List<CarPart> l)
-        {
-            if (this.num_Qua_Bolt.Value > 0)
-            {
-                float.TryParse(this.txt_Diameter_Bolt.Text, out float diameter);
-                float.TryParse(this.txt_Length_Bolt.Text, out float length);
-
-                if (length != 0 && diameter != 0)
-                {
-                    l.Add(new Bolt(diameter, length, (Bolt.HeadType) this.cmb_Type_Bolt.SelectedItem , (int)this.num_Qua_Bolt.Value));
-                }
-            }
+            Form windowTruck = new TruckWindow();
+            windowTruck.ShowDialog();
+            this.truckFinished.Invoke();
         }
 
         private void btn_Add_Click(object sender, EventArgs e)
         {
-            List<CarPart> newParts = new List<CarPart>();
 
-            this.CheckBolts(newParts);
-            this.CheckNuts(newParts);
-            this.CheckAxles(newParts);
-            this.CheckCogs(newParts);
-            this.CheckBBs(newParts);
+            AddInventoryForm addInv = new AddInventoryForm();
 
-            this.warehouse.AddParts(newParts);
+            addInv.ShowDialog();
 
             this.UpdateTable();
-            this.ClearBoxes();
         }
 
         private void UpdateTable()
@@ -174,6 +105,32 @@ namespace Ventana_Produccion
             {
                 this.warehouse.Save(path);
                 MessageBox.Show("Warehouse saved succesfully!");
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void btn_LoadSQL_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                this.warehouse.LoadFromDatabase();
+                this.UpdateTable();
+
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void btn_SaveSQL_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                this.warehouse.SaveToDatabase();
             }
             catch(Exception ex)
             {

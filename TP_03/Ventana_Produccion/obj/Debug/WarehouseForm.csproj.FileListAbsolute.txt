@@ -13,3 +13,6 @@ E:\Proyectos\C#\TP_01\TP_03\Ventana_Produccion\obj\Debug\WarehouseForm.csproj.Co
 E:\Proyectos\C#\TP_01\TP_03\Ventana_Produccion\obj\Debug\WarehouseForm.csproj.CopyComplete
 E:\Proyectos\C#\TP_01\TP_03\Ventana_Produccion\obj\Debug\Ventana_Produccion.exe
 E:\Proyectos\C#\TP_01\TP_03\Ventana_Produccion\obj\Debug\Ventana_Produccion.pdb
+E:\Proyectos\C#\TP_01\TP_03\Ventana_Produccion\obj\Debug\Ventana_Produccion.AddInventoryForm.resources
+E:\Proyectos\C#\TP_01\TP_03\Ventana_Produccion\obj\Debug\Ventana_Produccion.RequestForm.resources
+E:\Proyectos\C#\TP_01\TP_03\Ventana_Produccion\obj\Debug\Ventana_Produccion.TruckWindow.resources

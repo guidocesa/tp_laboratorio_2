@@ -34,25 +34,29 @@ namespace Clases
         /// <param name="newRequest"></param>
         public void ReceiveRequest(List<CarPart> newRequest)
         {
-            foreach(CarPart item in newRequest)
+            if(newRequest.Count > 0)
             {
-                if( !availableParts.Contains(item) ||
-                    (availableParts.Contains(item) && availableParts[availableParts.IndexOf(item)].Stock < item.CheckStock()) )
+                foreach(CarPart item in newRequest)
                 {
-                    throw new Exception("Not enough stock");
+                    if( !availableParts.Contains(item) ||
+                        (availableParts.Contains(item) && availableParts[availableParts.IndexOf(item)].Stock < item.CheckStock()) )
+                    {
+                        throw new Exception("Not enough stock");
+                    }
                 }
-            }
 
-            /*
-             * Here a message or request notification should be sent to the warehouse
-             */
+                /*
+                 * Here a message or request notification should be sent to the warehouse
+                 */
 
 
-            this.Save(Environment.CurrentDirectory + "\\Request_" + DateTime.Now.ToString("yyyy-MM-dd T HH-mm-ss") + ".xml", newRequest);
+            
+                this.Save(Environment.CurrentDirectory + "\\Request_" + DateTime.Now.ToString("yyyy-MM-dd T HH-mm-ss") + ".xml", newRequest);
 
-            foreach (CarPart item in newRequest)
-            {
-                availableParts[availableParts.IndexOf(item)].ReduceStock(item.CheckStock());
+                foreach (CarPart item in newRequest)
+                {
+                    availableParts[availableParts.IndexOf(item)].ReduceStock(item.CheckStock());
+                }
             }
         }
 
@@ -150,60 +154,25 @@ namespace Clases
         /// <param name="aux"></param>
         public void LoadObjects(List<Entry<string, int>> aux)
         {
-            float length; 
-            float diameter;
 
             this.availableParts.Clear();
 
             foreach (Entry<string, int> item in aux)
             {
-                string[] ID = item.Key.Split('-');
-
-                switch(ID[0])
-                {
-                    case "BB":
-                        float.TryParse(ID[1].Remove(0, 1), out  diameter);
-                        BallBearing bb = new BallBearing(diameter, item.Value);
-                        this.availableParts.Add(bb);
-                        break;
-
-                    case "A":
-                        float.TryParse(ID[1].Remove(0, 1), out length);
-                        float.TryParse(ID[2].Remove(0, 1), out diameter);
-                        Axle a = new Axle(length, diameter, item.Value);
-                        this.availableParts.Add(a);
-                        break;
-
-                    case "C":
-                        int.TryParse(ID[1].Remove(0, 1), out int teeth);
-                        Cog c = new Cog(teeth, item.Value);
-                        this.availableParts.Add( c);
-                        break;
-
-                    case "N":
-                        float.TryParse(ID[1].Remove(0, 1), out diameter);
-                        Nut n = new Nut(diameter, item.Value);
-                        this.availableParts.Add( n);
-                        break;
-
-                    case "B":
-                        float.TryParse(ID[2].Remove(0, 1), out diameter);
-                        float.TryParse(ID[3].Remove(0, 1), out length);
-                        if(ID[1].Equals("HEX"))
-                        {
-                            Bolt b = new Bolt(diameter, length, Bolt.HeadType.HEX, item.Value);
-                            this.availableParts.Add( b);
-                        }
-                        else
-                        {
-                            Bolt b = new Bolt(diameter, length, Bolt.HeadType.ALEM, item.Value);
-                            this.availableParts.Add( b);
-                        }
-                        break;
-                    default:
-                        break;
-                }
+                this.availableParts.Add(item.Key.LoadPartFromString());
+                this.availableParts.Last().Stock = item.Value;
             }
+        }
+
+        public void LoadFromDatabase()
+        {
+            this.availableParts.Clear();
+            this.availableParts = SQLConnection.LoadWarehouse();
+        }
+
+        public void SaveToDatabase()
+        {
+            SQLConnection.SaveWarehouse(this.availableParts);
         }
     }
 }

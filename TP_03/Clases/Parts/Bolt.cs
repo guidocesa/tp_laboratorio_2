@@ -25,5 +25,10 @@ namespace Clases
             this.Length = length;
             this.CurrentHeadType = headType;
         }
+
+        public override CarPart GetCopy()
+        {
+            return new Bolt(this.Diameter, this.Length, this.CurrentHeadType, 0);
+        }
     }
 }

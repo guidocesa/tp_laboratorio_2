@@ -15,5 +15,10 @@ namespace Clases
         {
             this.Diameter = diameter;
         }
+
+        public override CarPart GetCopy()
+        {
+            return new Nut(this.Diameter, 0);
+        }
     }
 }
