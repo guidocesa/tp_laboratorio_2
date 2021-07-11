@@ -1,0 +1,11 @@
+E:\Proyectos\C#\TP_01\TP_03\Test\bin\Debug\Test.exe.config
+E:\Proyectos\C#\TP_01\TP_03\Test\bin\Debug\Test.exe
+E:\Proyectos\C#\TP_01\TP_03\Test\bin\Debug\Test.pdb
+E:\Proyectos\C#\TP_01\TP_03\Test\bin\Debug\Clases.dll
+E:\Proyectos\C#\TP_01\TP_03\Test\bin\Debug\Serializer.dll
+E:\Proyectos\C#\TP_01\TP_03\Test\bin\Debug\Clases.pdb
+E:\Proyectos\C#\TP_01\TP_03\Test\bin\Debug\Serializer.pdb
+E:\Proyectos\C#\TP_01\TP_03\Test\obj\Debug\Test.csproj.CoreCompileInputs.cache
+E:\Proyectos\C#\TP_01\TP_03\Test\obj\Debug\Test.csproj.CopyComplete
+E:\Proyectos\C#\TP_01\TP_03\Test\obj\Debug\Test.exe
+E:\Proyectos\C#\TP_01\TP_03\Test\obj\Debug\Test.pdb

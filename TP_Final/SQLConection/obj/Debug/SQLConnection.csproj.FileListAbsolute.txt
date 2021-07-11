@@ -1,0 +1,11 @@
+E:\Proyectos\C#\TP_01\TP_03\SQLConection\bin\Debug\SQLConection.dll
+E:\Proyectos\C#\TP_01\TP_03\SQLConection\bin\Debug\SQLConection.pdb
+E:\Proyectos\C#\TP_01\TP_03\SQLConection\bin\Debug\Clases.dll
+E:\Proyectos\C#\TP_01\TP_03\SQLConection\bin\Debug\Serializer.dll
+E:\Proyectos\C#\TP_01\TP_03\SQLConection\bin\Debug\Clases.pdb
+E:\Proyectos\C#\TP_01\TP_03\SQLConection\bin\Debug\Serializer.pdb
+E:\Proyectos\C#\TP_01\TP_03\SQLConection\obj\Debug\SQLConnection.csprojAssemblyReference.cache
+E:\Proyectos\C#\TP_01\TP_03\SQLConection\obj\Debug\SQLConnection.csproj.CoreCompileInputs.cache
+E:\Proyectos\C#\TP_01\TP_03\SQLConection\obj\Debug\SQLConnection.csproj.CopyComplete
+E:\Proyectos\C#\TP_01\TP_03\SQLConection\obj\Debug\SQLConection.dll
+E:\Proyectos\C#\TP_01\TP_03\SQLConection\obj\Debug\SQLConection.pdb
