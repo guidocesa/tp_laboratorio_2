@@ -26,6 +26,10 @@ namespace Clases
             this.CurrentHeadType = headType;
         }
 
+        /// <summary>
+        /// Returns a similar Bolt object with Stock set to zero.
+        /// </summary>
+        /// <returns></returns>
         public override CarPart GetCopy()
         {
             return new Bolt(this.Diameter, this.Length, this.CurrentHeadType, 0);

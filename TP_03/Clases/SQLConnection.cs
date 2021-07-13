@@ -10,6 +10,10 @@ namespace Serializer
 {
     public static class SQLConnection
     {
+        /// <summary>
+        /// Loads the Carparts from an SQL database to the warehouse.
+        /// </summary>
+        /// <returns></returns>
         public static List<CarPart> LoadWarehouse()
         {
             List<CarPart> parts = new List<CarPart>();
@@ -46,6 +50,10 @@ namespace Serializer
             }
         }
 
+        /// <summary>
+        /// Saves the current warehouse to the SQL database. If the part already exists it updates the stock. If not its added.
+        /// </summary>
+        /// <param name="parts"></param>
         public static void SaveWarehouse(List<CarPart> parts)
         {
             string connectionStr = @"Data Source = .; Initial Catalog = TPFinal; Integrated Security = True";

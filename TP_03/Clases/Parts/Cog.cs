@@ -17,6 +17,10 @@ namespace Clases
             this.TeethNumber = teethNumber;
         }
 
+        /// <summary>
+        /// Returns a similar Cog object with Stock set to zero.
+        /// </summary>
+        /// <returns></returns>
         public override CarPart GetCopy()
         {
             return new Cog(this.TeethNumber, 0);

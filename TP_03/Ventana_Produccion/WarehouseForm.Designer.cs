@@ -156,7 +156,9 @@ namespace Ventana_Produccion
             this.Controls.Add(this.btn_Add);
             this.Controls.Add(this.btn_MakeRequest);
             this.Name = "WarehouseForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Warehouse Manager";
+            this.Load += new System.EventHandler(this.WarehouseForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGrid_PartsTable)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.warehouseBindingSource1)).EndInit();
             this.ResumeLayout(false);

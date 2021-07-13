@@ -164,12 +164,26 @@ namespace Clases
             }
         }
 
-        public void LoadFromDatabase()
+        /// <summary>
+        /// Loads the CarParts from a SQL database.
+        /// </summary>
+        public bool LoadFromDatabase()
         {
             this.availableParts.Clear();
             this.availableParts = SQLConnection.LoadWarehouse();
+            if(availableParts.Count > 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
 
+        /// <summary>
+        /// Saves the current car parts to the SQL database.
+        /// </summary>
         public void SaveToDatabase()
         {
             SQLConnection.SaveWarehouse(this.availableParts);

@@ -91,6 +91,11 @@ namespace Clases
             }
         }
 
+        /// <summary>
+        /// Compares a string to a CarPart's Id to a String to see if they match.
+        /// </summary>
+        /// <param name="other"></param>
+        /// <returns></returns>
         public bool Equals(String other)
         {
             if (this.Id == other)

@@ -26,8 +26,22 @@ namespace Ventana_Produccion
             this.truckFinished += ChangeButtons;
         }
 
+        /// <summary>
+        /// Sets the window size.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void WarehouseForm_Load(object sender, EventArgs e)
+        {
+            this.MaximumSize = this.Size;
+            this.MinimumSize = this.Size;
+        }
 
-
+        /// <summary>
+        /// Opens the request window.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btn_MakeRequest_Click(object sender, EventArgs e)
         {
             RequestForm reqForm = new RequestForm(this.warehouse.GetParts());
@@ -41,6 +55,9 @@ namespace Ventana_Produccion
             }
         }
 
+        /// <summary>
+        /// Sets the buttons back to normal when the request is finished.
+        /// </summary>
         private void ChangeButtons()
         {
             if(this.InvokeRequired)
@@ -57,6 +74,9 @@ namespace Ventana_Produccion
             }
         }
 
+        /// <summary>
+        /// Starts the truck animation.
+        /// </summary>
         private void ShowTruck()
         {
             Form windowTruck = new TruckWindow();
@@ -64,9 +84,13 @@ namespace Ventana_Produccion
             this.truckFinished.Invoke();
         }
 
+        /// <summary>
+        /// Opens a new window to add inventory to the warehouse.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btn_Add_Click(object sender, EventArgs e)
         {
-
             AddInventoryForm addInv = new AddInventoryForm();
 
             addInv.ShowDialog();
@@ -74,6 +98,9 @@ namespace Ventana_Produccion
             this.UpdateTable();
         }
 
+        /// <summary>
+        /// Keeps the shown table updated.
+        /// </summary>
         private void UpdateTable()
         {
             this.dataGrid_PartsTable.Rows.Clear();
@@ -84,6 +111,11 @@ namespace Ventana_Produccion
             }
         }
 
+        /// <summary>
+        /// Loads a saved warehose from an XML file.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btn_LoadWare_Click(object sender, EventArgs e)
         {
             string path = Environment.CurrentDirectory + "\\Warehouse.xml";
@@ -98,6 +130,11 @@ namespace Ventana_Produccion
             }
         }
 
+        /// <summary>
+        /// Saves the currect warehouse as an XML file.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btn_SaveWarehouse_Click(object sender, EventArgs e)
         {
             string path = Environment.CurrentDirectory + "\\Warehouse.xml";
@@ -112,12 +149,20 @@ namespace Ventana_Produccion
             }
         }
 
+        /// <summary>
+        /// Loads the warehouse from an SQL database.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btn_LoadSQL_Click(object sender, EventArgs e)
         {
             try
             {
-                this.warehouse.LoadFromDatabase();
-                this.UpdateTable();
+                if(this.warehouse.LoadFromDatabase())
+                {
+                    this.UpdateTable();
+                    MessageBox.Show("Warehouse loaded succesfully.");
+                }
 
             }
             catch(Exception ex)
@@ -126,16 +171,23 @@ namespace Ventana_Produccion
             }
         }
 
+        /// <summary>
+        /// Saves or adds the current warehouse to the SQL database.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btn_SaveSQL_Click(object sender, EventArgs e)
         {
             try
             {
                 this.warehouse.SaveToDatabase();
+                MessageBox.Show("Warehouse loaded from database sucessfully.");
             }
             catch(Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
         }
+
     }
 }

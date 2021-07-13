@@ -16,6 +16,10 @@ namespace Ventana_Produccion
     {
         List<CarPart> carParts;
 
+        /// <summary>
+        /// Sets the displayed table
+        /// </summary>
+        /// <param name="carParts"></param>
         public RequestForm(List<CarPart> carParts)
         {
             InitializeComponent();
@@ -35,6 +39,11 @@ namespace Ventana_Produccion
             ((DataGridViewComboBoxColumn)this.dataGrid_PartsTable.Columns[2]).DataSource = aux;
         }
 
+        /// <summary>
+        /// Reads the selected numbers from the table. Checks if they are correct and if so, generates the new request.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btn_MakeRequest_Click(object sender, EventArgs e)
         {
             try
@@ -48,7 +57,7 @@ namespace Ventana_Produccion
                     {
                         break;
                         //No pude encontrar una solucion a que no tome la ultima fila vacia, la cual no puede ser borrada tampoco.
-                        //La mejor solucion seria implementar un for en vez de foreach pero me parecia mas complicado
+                        //La mejor solucion seria implementar un for en vez de foreach pero me parecia mas complicado.
                     }
                     if( Convert.ToInt32(item.Cells[2].Value) > Convert.ToInt32(item.Cells[1].Value))
                     {
@@ -84,6 +93,11 @@ namespace Ventana_Produccion
 
         }
 
+        /// <summary>
+        /// Closes the form.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btn_Close_Click(object sender, EventArgs e)
         {
             this.Close();

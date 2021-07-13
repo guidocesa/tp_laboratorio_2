@@ -9,6 +9,12 @@ namespace Clases
 {
     public static class Extender
     {
+
+        /// <summary>
+        /// Translates a String to a CarPart object and returns it with the Stock set to 0.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public static CarPart LoadPartFromString(this string id)
         {
             float length;

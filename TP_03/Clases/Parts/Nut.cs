@@ -16,6 +16,10 @@ namespace Clases
             this.Diameter = diameter;
         }
 
+        /// <summary>
+        /// Returns a similar Nut object with Stock set to zero.
+        /// </summary>
+        /// <returns></returns>
         public override CarPart GetCopy()
         {
             return new Nut(this.Diameter, 0);

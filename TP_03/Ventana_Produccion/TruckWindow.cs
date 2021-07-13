@@ -27,10 +27,16 @@ namespace Ventana_Produccion
             truck = Image.FromFile("MovingTruck.png");
         }
 
+        /// <summary>
+        /// Draws the corresponding truck frame according to the frame count and advences the truck position.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void TruckWindow_Paint(object sender, PaintEventArgs e)
         {
             e.Graphics.DrawImage(truck, pos.X, pos.Y,new Rectangle(160 * frameCount, 0, 160 , 120), GraphicsUnit.Pixel);
-            pos.X += 6;
+            pos.X += 6;  // <----- Change this to adjust truck speed.
+
             frameCount++;
 
             if (pos.X >= (this.Width - 225))
@@ -45,7 +51,7 @@ namespace Ventana_Produccion
             {
                 this.Close();
             }
-            Thread.Sleep(50);
+            Thread.Sleep(50); // <----- Or change this to adjust truck speed.
 
             this.Refresh();
         }
