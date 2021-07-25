@@ -107,6 +107,28 @@ namespace MiCalculadora
             this.btnDecimalABinario.Enabled = true;
             this.btnBinarioADecimal.Enabled = false;
         }
-        
+
+        /// <summary>
+        /// Limpia los campos al comenzar la aplicacion.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void FormCalculadora_Load(object sender, EventArgs e)
+        {
+            this.Limpiar();
+        }
+
+        /// <summary>
+        /// Confirma la salida.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void FormCalculadora_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if(MessageBox.Show("Seguro que desea salir?", "Confirmacion", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
+            {
+                e.Cancel = true;
+            }
+        }
     }
 }

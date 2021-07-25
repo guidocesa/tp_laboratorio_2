@@ -4,3 +4,9 @@ D:\Proyectos\C#\TP_01\TP_01\Entidades\obj\Debug\Entidades.csprojAssemblyReferenc
 D:\Proyectos\C#\TP_01\TP_01\Entidades\obj\Debug\Entidades.csproj.CoreCompileInputs.cache
 D:\Proyectos\C#\TP_01\TP_01\Entidades\obj\Debug\Entidades.dll
 D:\Proyectos\C#\TP_01\TP_01\Entidades\obj\Debug\Entidades.pdb
+E:\Proyectos\C#\TP_01\TP_01\Entidades\bin\Debug\Entidades.dll
+E:\Proyectos\C#\TP_01\TP_01\Entidades\bin\Debug\Entidades.pdb
+E:\Proyectos\C#\TP_01\TP_01\Entidades\obj\Debug\Entidades.csprojAssemblyReference.cache
+E:\Proyectos\C#\TP_01\TP_01\Entidades\obj\Debug\Entidades.csproj.CoreCompileInputs.cache
+E:\Proyectos\C#\TP_01\TP_01\Entidades\obj\Debug\Entidades.dll
+E:\Proyectos\C#\TP_01\TP_01\Entidades\obj\Debug\Entidades.pdb
